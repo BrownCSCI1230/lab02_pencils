@@ -56,11 +56,16 @@ However, a float variable takes up 4 bytes, which is actually a pretty big memor
 
 The answer is yes! An integer ranging from 0-255 only takes up 1 byte. Conventionally, we use these to represent the color intensities instead of floats.
 
-DROPDOWN:
+<details>
+  <summary>Special Int</summary>
+  
+	Actually,a regular integer takes up 4 bytes(32 bits), and is able to represent numbers much larger than 255. When dealing with colors, however, we only need numbers less than 256.
 
-Actually,a regular integer takes up 4 bytes(32 bits), and is able to represent numbers much larger than 255. When dealing with colors, however, we only need numbers less than 256.
+	So, to be more memory efficient, we usually use a special 8-bit integer type to represent colors.  
+</details>
 
-So, to be more memory efficient, we usually use a special 8-bit integer type to represent colors.  
+
+
 
 **Use int ranged 0-255 to represent colors**
 
