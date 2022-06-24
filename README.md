@@ -58,14 +58,11 @@ The answer is yes! An integer ranging from 0-255 only takes up 1 byte. Conventio
 
 <details>
   <summary>Special Int</summary>
-  
+
 Actually,a regular integer takes up 4 bytes(32 bits), and is able to represent numbers much larger than 255. When dealing with colors, however, we only need numbers less than 256.
 
 So, to be more memory efficient, we usually use a special 8-bit integer type to represent colors.  
 </details>
-
-
-
 
 **Use int ranged 0-255 to represent colors**
 
@@ -176,7 +173,8 @@ Next, follow the interface instructions, define the name and location of your he
 
 (My Qt tabs are in Chinese, need to find a English version to make screen shots)
 
-*Collapsible section:* 
+<details>
+  <summary>What does these all mean?</summary>
 
 *Your structure is defined between* 
 
@@ -199,15 +197,14 @@ Next, follow the interface instructions, define the name and location of your he
 
 *(Examples of member function)*
 
-
+</details>
 
 To use the structure you just defined, you can simply include the header file at the top lines of your code and use it.
 
 You don't have to do it here, as we have implemented a more complex RGBA structure for you in [location], and linked it for you.
 
-*Collapsible section: *
-
-** Array of structs**
+<details>
+  <summary>Array of struct</summary>
 
 *An array is a collection of data items of the same type. So, just like ints, floats, chars etc., structs can be put into an array too.*
 
@@ -225,7 +222,10 @@ RGBA rgbaCArray[100]
 
 When an element in the array, for instance, rgbaArray[10] gets accessed, it returns the RGBA value at row 1, column 0
 
-**Extra Info: struct of arrays**
+</details>
+
+<details>
+  <summary>Extra Info: struct of arrays</summary>
 
 *Alternatively, you can also create a structure of arrays(this example assumes there are 10 x 10 pixels on a canvas):*
 
@@ -241,7 +241,7 @@ struct canvas {
 *So r[0] represent the red intensity of pixel (0,0), g[0] represents the green intensity of pixel(0,0), and so on...*
 
 *The canvas we use in this class is an array of RGBA, but you are welcome to learn about the other one here: [Array of Structures vs. Array within a Structure in C/C++ - GeeksforGeeks](https://www.geeksforgeeks.org/array-of-structures-vs-array-within-a-structure-in-c-and-cpp/#:~:text=Below is the tabular difference between the Array,a%2C b%2C c%3B } students [ ... )
-
+</details>
 #### 2.2.2. Your Mission
 
 Now, let's switch to a canvas that allows us to use colors!
@@ -299,11 +299,14 @@ The functions `MouseDown()`, `MouseMove()`, and `MouseUp()` are called to change
 
 Though we recommend using std::vector (and std::array) for all your canvas needs, Qt’s canvas … so we’ll use C arrays here. However! It’s used the same way.
 
-**Collapsible:* 
+</details>
 
-**Want to know why Qt does this?*
+<details>
+  <summary>Want to know why Qt does this?</summary>
 
-****We don’t know.***
+We don’t know.
+	
+</details>
 
 *Images displayed in QT have to be a type called 'QImage', and they are defined to be C arrays. Unfortunately, this implementation is hard to circumvent, so you have to work with C arrays when dealing with QT.*
 
