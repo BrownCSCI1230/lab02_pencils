@@ -102,11 +102,11 @@ Above is an example of filling indices of a 2 x 4 array.
 
 | Task 2 |
 | :----- |
-| Now, lets create our very own canvas. We'll start with the basic: creating a grayscale canvas:<br/><br/><ul><li>In function ….initialize a "gray canvas" of 5 x 10 pixels by creating a std::vector in [location] .</li><li>Set the initial value of all its elements to 123. (Instead of using for loops, you might want to consider faster way of doing it. For example, look up std::fill may help you)</li><ul> |
+| Now, lets create our very own canvas. We'll start with the basic: creating a grayscale canvas:<br/><br/><ul><li>In function ….initialize a "gray canvas" of 5 x 10 pixels by creating a std::vector in [location] .</li><li>Set the initial value of all its elements to 123. (Instead of using for loops, you might want to consider faster way of doing it. For example, look up std::fill may help you)</li></ul> |
 
 | Task 3 |
 | :----- |
-| <ul><li>Display the canvas by passing the vector to `displayGrayCanvas()` at [location]</li><li>Compile and run the code with command line input of [...]</li><ul>Do you see a gray box? |
+| <ul><li>Display the canvas by passing the vector to `displayGrayCanvas()` at [location]</li><li>Compile and run the code with command line input of [...]</li></ul>Do you see a gray box? |
 
 **task:**
 
