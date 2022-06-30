@@ -8,7 +8,7 @@ In the first part of this lab, you will learn the basic way to operate on digita
 
 ## Prologue: Command Line Inputs
 
-Before we start everything about digital images, let's first introduce you to how to use command line inputs in QT.
+Before we start everything about digital images, let's first introduce you to how to use command line inputs in Qt.
 
 Sometimes we write different code to do different things, and only want the program to run one of them in one execution. (eg: In this lab, you can choose to enable a black-and-white canvas or a colorful canvas). How do we tell the program what we want it to do then? Command line input is a very convenient way for this!
 
@@ -161,7 +161,7 @@ struct NaiveRGBA
 
 Try defining a RGBA structure in your own code by copying the above code into a new header file.
 
-To create a new file in QT, right click on the left-side 'Project' bar, and select "Add New"
+To create a new file in Qt, right click on the left-side 'Project' bar, and select "Add New"
 
 You should see an interface asking you to choose which kind of new file you want to add. In our task, you should select C/C++ header file.
 
@@ -308,7 +308,7 @@ We don’t know.
 	
 </details>
 
-*Images displayed in QT have to be a type called 'QImage', and they are defined to be C arrays. Unfortunately, this implementation is hard to circumvent, so you have to work with C arrays when dealing with QT.*
+*Images displayed in Qt have to be a type called 'QImage', and they are defined to be C arrays. Unfortunately, this implementation is hard to circumvent, so you have to work with C arrays when dealing with Qt.*
 
 [By calling canvas->data], your program returns a pointer to the array of canvas pixels, which are RGBA structs. Your [] function returns a xy coordinate of your mouse in canvas space. Again, you need to work on solving the index for your pixel, and find a way to modify it.
 
