@@ -100,13 +100,10 @@ Here, we store them in row-major order, where arrays are arranged sequentially r
 
 Above is an example of filling indices of a 2 x 4 array.
 
-**task**: 
-
-Now, lets create our very own canvas. We'll start with the basic: creating a grayscale canvas:
-
-* In function ….initialize a "gray canvas" of 5 x 10 pixels by creating a std::vector in [location] .
-
-* Set the initial value of all its elements to 123. (Instead of using for loops, you might want to consider faster way of doing it. For example, look up std::fill may help you)
+| Task 2 |
+| :----- |
+| Now, lets create our very own canvas. We'll start with the basic: creating a grayscale canvas:<br/><br/><ul><li>In function ….initialize a "gray canvas" of 5 x 10 pixels by creating a std::vector in [location] .
+</li><li>Set the initial value of all its elements to 123. (Instead of using for loops, you might want to consider faster way of doing it. For example, look up std::fill may help you)
 
 **task**: 
 
