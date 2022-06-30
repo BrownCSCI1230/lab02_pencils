@@ -74,11 +74,10 @@ This will be the representation method we will be using in this course.
 
 To convert between the above representations, we need to scale the number up or down. For instance, to convert from 0-255 integer representation to 0-1 float representation, simply divide all values by 255.
 
-**Task:**
+| Task 1 |
+| :----- |
 
-In [function location], implement a method to convert 0-1 float representation to 0-255 integer representation.
-
-HINT: you might want to check out round() function in cmath library.
+|In [function location], implement a method to convert 0-1 float representation to 0-255 integer representation.<br/><br/>**HINT**: you might want to check out round() function in cmath library.|
 
 ## 2. An Un-interactive Canvas
 
