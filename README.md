@@ -72,7 +72,7 @@ The alpha channel represents the transparency of the color. You will work more w
 
 For Instance, RGBA value of (255,0,0) represents a red color, and (255,0,255) adds blue to it to make purple.
 
-<img src="RGB Slider Demo.jpg" alt="RGB Slider Demo" style="zoom:45%;" /><img src="RGB Slider Demo2.jpg" alt="RGB Slider Demo2" style="zoom:45%;" /><img src="Color Slider.jpg" alt="Color Slider" style="zoom: 45%;" />
+<img src="RGB Slider Demo.jpg" alt="RGB Slider Demo" style="zoom:25%;" /><img src="RGB Slider Demo2.jpg" alt="RGB Slider Demo2" style="zoom:25%;" /><img src="Color Slider.jpg" alt="Color Slider" style="zoom: 25%;" />
 
 Toggle the RGB color slider here: https://www.cssscript.com/demo/rgb-color-picker-slider/
 
