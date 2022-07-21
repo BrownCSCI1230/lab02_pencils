@@ -168,11 +168,11 @@ Let's change the canvas to a colorful one. Instead of a std::vector of numbers, 
 
 #### 3.3.1. Our CS1230 RGBA Struct
 
-To group several related variables into one place, we should create a Struct.
+To group several related variables into one place, we should create a struct.
 
-Recall what you learned in Lab01 about structures and how to create them.
+Recall what you learned in Lab01 about structs and how to create them.
 
-A naïve RGBA structure should have 4 members: red, green, blue, and alpha. We give you a simple example of how to define it below:
+A naive RGBA structure should have 4 members: red, green, blue, and alpha. Here's an example of how to define a struct:
 
 ```c++
 #ifndef NAIVE_RGBA
@@ -190,15 +190,15 @@ struct NaiveRGBA
 
 **task:**
 
-Try defining a RGBA structure in your own code by copying the above code into a new header file.
+In this task, you will familiarize yourself with structs and creating files in Qt. Define a RGBA struct in your own code by copying the example above into a new header file. 
 
-To create a new file in Qt, right click on the left-side 'Project' bar, and select "Add New"
+To create a new file in Qt, right click on the left-side 'Project' bar, and select 'Add New'
 
-You should see an interface asking you to choose which kind of new file you want to add. In our task, you should select C/C++ header file.
+You should see an interface asking you to choose which type of file to create. For this task, you should select C/C++ header file.
 
 [Screenshot]
 
-Next, follow the interface instructions, define the name and location of your header file, and in project management section, select 'Done'. You should see a new header file appear in your chosen location after a few seconds.
+Next, follow the interface instructions: define the name and location of your header file, and in project management section, select 'Done'. You should see a new header file appear in your chosen location after a few seconds.
 
 [screenshot] [screenshot]
 
@@ -231,9 +231,7 @@ _(Examples of member function)_
 
 </details>
 
-To use the structure you just defined, you can simply include the header file at the top lines of your code and use it.
-
-You don't have to do it here, as we have implemented a more complex RGBA structure for you in [location], and linked it for you.
+To use the structure you just defined, you can simply include the header file at the top lines of your code and use it. You don't have to do it here, as we have implemented a more complex RGBA structure for you in [location], and linked it for you.
 
 <details>
   <summary>Array of struct</summary>
@@ -282,7 +280,7 @@ canvas:
 | alpha | alpha | alpha | ...  | alpha |
 | ----- | ----- | ----- | ---- | ----- |
 
-*In code, the canvas as allocated like this:*
+*In code, we allocate the canvas as shown below:*
 
 ```C++
 struct canvas {
@@ -295,7 +293,7 @@ struct canvas {
 
 _So r[0] represent the red intensity of pixel (0,0), g[0] represents the green intensity of pixel(0,0), and so on..._
 
-\*The canvas we use in this class is an array of RGBA, but you are welcome to learn about the other one here: [Array of Structures vs. Array within a Structure in C/C++ - GeeksforGeeks](https://www.geeksforgeeks.org/array-of-structures-vs-array-within-a-structure-in-c-and-cpp/#:~:text=Below is the tabular difference between the Array,a%2C b%2C c%3B } students [ ... )
+\*The canvas we use in this class is an array of RGBA, but you are welcome to learn about the other method here: [Array of Structures vs. Array within a Structure in C/C++ - GeeksforGeeks](https://www.geeksforgeeks.org/array-of-structures-vs-array-within-a-structure-in-c-and-cpp/#:~:text=Below is the tabular difference between the Array,a%2C b%2C c%3B } students [ ... )
 
 </details>
 
@@ -307,7 +305,7 @@ Now, let's switch to a canvas that allows us to use colors!
 
 - Modify your previous code to create a canvas with colors instead of grayscale only.
 
-Consider the type of variable you want your std::vector to have.
+Consider the type of variable you want your std::vector to have. (what does this mean??? like a vector of RGBA structs?)
 
 - Set the initial values of RGBA to (0,123,123,1)
 
@@ -316,15 +314,17 @@ Consider the type of variable you want your std::vector to have.
 - Display the canvas by passing the vector to `displayGrayCanvas()` at [location]
 - Compile and run the code with command line input of [...]
 
-What is color of your canvas now?
+Your canvas should now look like this:
+	
+![colored canvas][img path]
 
 **task**:
 
-Now, in `drawFlower(vec2 xy)` at [code location], try changing the pixel at coordinate (x,y) to something other than the initial value. You should work out what its index should be.
+Now, in `drawFlower(vec2 xy)` at [code location], try changing the pixel at coordinate (x,y) to something other than the initial value. Remember that the pixels are stored in a 1D array, so you will have to calculate the index of that parituclar pixel. 
 
 **Task:**
 
-Try making the function draw a flower with colorful center and petals, sort of like the example below(You can decide the color yourself):
+Try making the function draw a flower with colorful center and petals, sort of like the example below (you can decide the color yourself):
 
 ![](bunch-colorful.jpg)
 
