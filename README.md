@@ -303,11 +303,9 @@ Now, let's switch to a canvas that allows us to use colors!
 
 **Task:**
 
-- Modify your previous code to create a canvas with colors instead of grayscale only.
+- Modify your previous code to create a canvas with colors instead of grayscale only. Set the pixels such that they have an RGBA value of (0, 123, 123, 1)
 
-Consider the type of variable you want your std::vector to have. (what does this mean??? like a vector of RGBA structs?)
-
-- Set the initial values of RGBA to (0,123,123,1)
+Remember that the pixel data is stored in a 1D array. Think about the data structure you want that array to store. 
 
 **Task:**
 
@@ -336,35 +334,30 @@ task :
 
 ## 4. The Pencil Tool
 
-Hope you had a little fun drawing flowers! Now, Instead of modifying a 2D canvas in code, we want to be able to modify it _interactively_.
+Hope you had a little fun drawing flowers! Now, instead of manually modifying the canvas in code, we want to be able to modify it _interactively_.
 
 ### 4.1. CanvasWidget
 
-The key to interactivity in Qt is events.
+The key to interactivity in Qt is using events handlers.
 
-When events associated with particular _signals_ occur*,* Qt calls functions called _slots_. You don’t need to know how to use these, of course—we’ll (do our best to) handle everything Qt-related for you.
-
-In this class, we will set up the functions that gets called when events occur for you, and you need to fill these functions.
+When events associated with particular _signals_ occur, Qt calls functions known as _slots_. You don’t need to know how to use these since we'll (do our best to) handle everything Qt-related. 
+	
+Notice the `MouseDown()`, `MouseMove()`, and `MouseUp()` function stubs in the ______ class. These funtions get called when the user interats with the canvas (in other words, when an event occurs). In the next few sections, you'll need to fill in these function stubs in order to make your canvas interactive. 
 
 ### 4.2. Pencil
 
-The functions `MouseDown()`, `MouseMove()`, and `MouseUp()` are called to change the canvas when the user interacts with the canvas with their cursor/mouse, we will Implement the event handlers in X file
+Now, it's time to implement a pencil!
 
 #### 4.2.1. A Note On How To Survive A Weird Compromise: C Arrays
 
-Though we recommend using std::vector (and std::array) for all your canvas needs, Qt’s canvas … so we’ll use C arrays here. However! It’s used the same way.
-
-</details>
+Though we recommend using std::vector (and std::array) for all your canvas needs, Qt’s canvas is weird. Images displayed in Qt have to be of the type 'QImage'. QImages are defined by C arrays. Unfortunately, it's hard to circumvent the usage of QImages, so you'll have to work with C arrays when dealing with Qt. But, the good news is that C arrays are used in the same way!
 
 <details>
   <summary>Want to know why Qt does this?</summary>
 
-
 We don’t know.
 
 </details>
-
-_Images displayed in QT have to be a type called 'QImage', and they are defined to be C arrays. Unfortunately, this implementation is hard to circumvent, so you have to work with C arrays when dealing with QT._
 
 [By calling canvas->data], your program returns a pointer to the array of canvas pixels, which are RGBA structs. Your [] function returns a xy coordinate of your mouse in canvas space. Again, you need to work on solving the index for your pixel, and find a way to modify it.
 
