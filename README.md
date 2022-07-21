@@ -2,7 +2,7 @@
 
 ## 0. Introduction
 
-Computer graphics often deals with digital images, which are made up of pixels. Pixels are stored as two-dimensional arrays of color data in a computer. The most straightforward way of creating or editing them is to change the values stored in these arrays.
+Computer Graphics often deals with digital images, which are made up of pixels. Typically, pixels are stored as 2D arrays of color data in a computer. In this class, we will be storing pixel data as a 1D array. In order to edit these pixels, we change the values stored in the arrays. 
 
 In this lab, you will:
 
@@ -12,7 +12,7 @@ In this lab, you will:
 
 ## 1. Before You Begin
 
-Before you begin, here's some basic knowledge you'll need to work with labs (and projects) in CS123:
+Before you begin, here's some basic knowledge you'll need to complete labs (and projects) in CS123:
 
 ### 1.1. Stencil Code
 
@@ -20,7 +20,7 @@ Just like in `Lab 1: Setup`, we've provided you with some stencil code to get yo
 
 ### 1.2. Application Windows
 
-Run the project by hitting the big "play" button, and you should see an application window (with nothing in it) appear. This will come in handy later!
+Run the project by hitting the big "play" button. A blank application window will pop up. This will come in handy later!
 
 [ Image of application window ]
 
@@ -40,11 +40,9 @@ To set command line arguments, click into the `Projects` tab on the left sidebar
 
 In this lab, we use command [] and [] to control if we want to show a black-and-white canvas or colorful canvas in the application window.
 
-Once you're done with that, we may begin the lab proper!
-
 ## 2. Representing Colors
 
-In computer graphics, **images** are often represented as 2D arrays of **pixels**, which are simply stores for some form of data.
+In Computer Graphics, **images** are often represented as arrays of **pixels**, which simply store some form of data.
 
 > Technically, pixels can encode any kind of information. Later in CS123, we'll use [height maps](https://en.wikipedia.org/wiki/Heightmap) and [depth buffers](https://en.wikipedia.org/wiki/Z-buffering) to encode linear displacement, and even [normal maps](https://en.wikipedia.org/wiki/Normal_mapping) to encode directions!
 
@@ -58,29 +56,13 @@ A pixel in a grayscale image requires only a single number to encode its intensi
 
 ![imagematrix](imagematrix.png)
 
-Conventionally, we define 0 as the darkest color (completely black), and 1 as the lightest color (completely white). Like what we show in the picture above.
+Conventionally, we define 0 as the darkest color (completely black), and 1 as the lightest color (completely white), as shown above.
 
-Correspondingly, 0.5 would be a medium-gray, and 0.7 would be a relatively lighter shade of gray.
+Therefore, 0.5 would be gray, and 0.7 would be a lighter shade of gray.
 
-### 2.2. RGBA
+### 2.2. A Note On Datatypes
 
-But grayscale images are kinda boring :(
-
-Throughout this course, we define colors using the Red-green-blue-alpha (RGBA) model. Here, pixels have 4 color channels: red, green, blue and alpha.
-
-The alpha channel represents the transparency of the color. You will work more with this concept in your project. For now, let's focus on red, green and blue.
-
-For Instance, RGBA value of (255,0,0) represents a red color, and (255,0,255) adds blue to it to make purple.
-
-<img src="RGB Slider Demo.jpg" alt="RGB Slider Demo" style="zoom:25%;" /><img src="RGB Slider Demo2.jpg" alt="RGB Slider Demo2" style="zoom:25%;" /><img src="Color Slider.jpg" alt="Color Slider" style="zoom: 25%;" />
-
-Toggle the RGB color slider here: https://www.cssscript.com/demo/rgb-color-picker-slider/
-
-How does the change in RGBA values affect the produced color?
-
-### 2.3. A Note On Datatypes
-
-Earlier, we used floats ranging from 0 to 1 to represent color intensities.
+In grayscale, we use floats ranging from 0 to 1 to represent color intensities.
 
 However, a typical `float` occupies 4 bytes, which is actually a pretty big memory size. Can we manage to make the image look roughly the same with less memory?
 
@@ -88,15 +70,25 @@ The answer is yes! If we only represent colors using integers ranging from 0 to 
 
 In C++, this data type is declared as  `uint8_t`, and we will be using it through out this course.
 
-**Use int ranged 0-255 to represent colors**
+### 2.3. RGBA
 
-In a 0-255 integer representation, we use 255 to denote the MAX color intensity, and use integers between 0 and 255 to represent the colors in between.
+But grayscale images are kinda boring :(
 
-This is a very common color representation method, and you will be seeing it again and again in this course.
+Throughout this course, we define colors using the red-green-blue-alpha (RGBA) model. Here, pixels have 4 color channels: red, green, blue and alpha.
 
-**Conversion Between the Two**
+The alpha channel represents the opacity of the color. You will work more with this concept in your project. For now, let's focus on red, green, and blue.
 
-To convert between the above representations, we need to scale the number up or down. For instance, to convert from 0-255 integer representation to 0-1 float representation, simply divide all values by 255.
+<img src="RGB Slider Demo.jpg" alt="RGB Slider Demo" style="zoom:25%;" /><img src="RGB Slider Demo2.jpg" alt="RGB Slider Demo2" style="zoom:25%;" />
+
+As shown above, the RGBA value of (255,0,0) represents a red color. Thus, (255,0,255) mixes blue to red to it to make magenta. 
+
+You can use this [link](https://www.cssscript.com/demo/rgb-color-picker-slider/) to play around with the RGB color sliders. While you play around with the sliders, think about how changing the RGBA values affect the produced color. 
+
+### 2.4. Converting between \[0, 1] and \[0, 255]
+
+In a 0-255 integer representation, we use 255 to denote the MAX color intensity, and use integers between 0 and 255 to represent the colors in between. This is a very common color representation method, and you will be seeing it again and again in this course.
+
+To convert between the above representations, we need to scale the number up or down. For instance, to convert from 0-255 integer representation to 0-1 float representation, simply divide all values by 255. 
 
 | Task 2                                                       |
 | :----------------------------------------------------------- |
@@ -104,34 +96,39 @@ To convert between the above representations, we need to scale the number up or 
 
 ## 3. Your First Canvas
 
-In order to operate on images, you need an image!
-
 Let’s make a 2D canvas!
 
-### 3.1. Creating "2D" Arrays
+### 3.1. Creating "2D" Arrays (does this need to be changed?)
 
 In lab 01, you learned that you can use containers like `std::vector` or `std::array` to store linear collections of data.
 
-Collapsible section: Remind me: what are the differences between these ways of storing data? [Todo](Include information about memory management, make_unique, allocate and delete etc.)
+<details>
+	<summary>What are the differences between these ways of storing data?</summary>
+	[Todo](Include information about memory management, make_unique, allocate and delete etc.)
+</details>
 
-However, these are 1-dimensional, and what we need is 2D!
+Wait...these containers are 1D, so how do we represent 2D images?
 
-There are two common ways of using 1D data-structures to represent 2D ones:
+There are two common ways of doing this:
 
-- row-major order, and
-- column-major order
+- row-major order, or
+- column-major order 
 
 ![](row-major-order-1.jpg)<img src="Colum-Major-Order.jpg" alt="Colum-Major-Order" style="zoom: 50%;" />
 
-In this course, we store pixel data in row-major order, where arrays are arranged sequentially row by row, which means fillingi all the indices of the first row and then moving on to the next row.
+The example above displays the difference between row major order and column major order when filling a 2x4 array. Notice that the array gets filled row by row when using row major order and column by column when using column major order. In this course, we'll store pixel data in row-major order.
 
 Above is an example of filling indices of a 2 x 4 array. When accessing pixels in an image by their xy coordinates, you should compute its index in the array. 
 
+![ordering or array][imge path]
+
+Remember, we are representing pixel data using a 1D array rather than a 2D array. Refer to the image above to visualize how exactly we are storing the rows. Thus, when given the (x, y) coordinate of the pixel, you will have to compute that pixel's index in the array. 
+
 **task**:
 
-Now, lets create our very own image. We'll start with the basic: creating a grayscale image:
+Now, lets create the canvas. We'll start with the basic: creating a grayscale canvas.
 
-- In function ….initialize a "gray canvas" of 10 x 10 pixels by creating a std::vector in [location].
+- In function [] initialize a "gray canvas" of 10 x 10 pixels by creating a std::vector in [location].
 
 - Set the initial value of all its elements to 123. (Instead of using for loops, you might want to consider faster way of doing it. For example, look up std::fill may help you)
 
@@ -140,17 +137,16 @@ Now, lets create our very own image. We'll start with the basic: creating a gray
 - Display what you just created by passing the vector to `displayGrayCanvas()` at [location]
 - Compile and run the code with command line input of [...], make sure it's correct!
 
-Do you see a gray box?
+Your gray canvas should look like this:
 
-From now on, we will be using this image as our 'canvas'. We'll teach you how to 'draw' on it.
+![gray canvas image][img path]
 
-### 3.2. Modifying "2D" Arrays
+### 3.2. Modifying "2D" Arrays (also mildly confusing)
 
-By modifying data values in the array you just created, you can make the corresponding points, or pixels turn to different colors.
+By modifying the values in the array you just created, you can change the color of the corresponding pixels. 
 
-You can try changing a random data to 255 and observe what happen.
-
-A white dot showed up on your canvas, right?
+DO WE EVEN NEED THIS?
+Try changing a random value in the array to 255 and notice what happens. A white dot should show up on your canvas (this may be a little hard to see since changing a singular value will change a singular pixel). 
 
 Your job in this section, is to work our which pixel correspond to which element in the array, and change their values. Refer to the explanation on row-major-order for hint.
 
