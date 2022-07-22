@@ -2,6 +2,7 @@
 #define CANVAS2D_H
 
 #include <QWidget>
+#include "RGBA.h"
 
 class Canvas2D {
 public:
@@ -21,7 +22,7 @@ public:
     // Each row is width() wide and there are height() rows, so this array will have
     // width() * height() elements.
     std::vector<uint8_t> *DisplayCanvas();
-    //std::vector<RGBA> *DisplayColor();
+    std::vector<RGBA> *DisplayColor();
 
 
     // used by support code to provide access to canvas data
@@ -29,7 +30,7 @@ public:
     std::vector<uint8_t> m_canvasData;
     //Task 6:create your colorful canvas
     //eg:
-//    std::vector<RGBA> m_colorCanvasData;
+    std::vector<RGBA> m_colorCanvasData;
 };
 
 #endif // CANVAS2D_H

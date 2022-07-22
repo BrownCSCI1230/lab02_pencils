@@ -3,10 +3,22 @@
 
 // A structure for a color.  Each channel is 8 bits [0-255].
 struct RGBA {
-    uint8_t r;
-    uint8_t g;
-    uint8_t b;
-    uint8_t a;
+    RGBA() : r(0), g(0), b(0), a(255) {}
+    RGBA(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = 255)
+        : r(red), g(green), b(blue), a(alpha) {}
+
+    union {
+        struct { unsigned char r, g, b, a; };
+        unsigned char channels[4];
+    };
+
+    RGBA operator+(const RGBA &c1) const;
+    RGBA operator-(const RGBA &c1) const;
+    RGBA operator*(const RGBA &c1) const;
+    RGBA operator/(const RGBA &c1) const;
+
+    friend bool operator==(const RGBA &c1, const RGBA &c2);
+    friend bool operator!=(const RGBA &c1, const RGBA &c2);
 };
 
 #endif // RGBA_H

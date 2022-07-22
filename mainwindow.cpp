@@ -47,8 +47,6 @@ void MainWindow::canvasSetup(std::string canvasType)
     QByteArray* img = new QByteArray(reinterpret_cast<const char*>(m_canvas->data()), m_canvas->size());
 
 
-
-
     QImage now = QImage((const uchar*)img->data(), 500, 500, QImage::Format_RGBX8888);
     ui->label->setPixmap(QPixmap::fromImage(now));
     ui->label->show();

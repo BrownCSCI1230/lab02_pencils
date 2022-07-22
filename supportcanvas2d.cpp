@@ -7,24 +7,30 @@
 
 SupportCanvas2D::SupportCanvas2D(std::string canvasType)
 {
-    for(int i=0; i<250000; i++){
+    for (int i=0; i<250000; i++) {
         m_image.push_back(0);
         m_image.push_back(0);
         m_image.push_back(0);
         m_image.push_back(0);
     }
     m_canvas2d = new Canvas2D(canvasType);
-    for(int i=0 ; i<m_canvas2d->DisplayCanvas()->size(); i++){
-        for (int j = 0; j<50; j++){
-            m_image[4*50*i+4*j]=m_canvas2d->DisplayCanvas()->at(i);
-            m_image[4*50*i+4*j+1]=m_canvas2d->DisplayCanvas()->at(i);
 
-            m_image[4*50*i+4*j+2]=m_canvas2d->DisplayCanvas()->at(i);
+    if (canvasType == "grayscale") {
+        for (int i=0 ; i < m_canvas2d->DisplayCanvas()->size(); i++) {
+            for (int j = 0; j<50; j++) {
+                m_image[4*50*i+4*j]=m_canvas2d->DisplayCanvas()->at(i);
+                m_image[4*50*i+4*j+1]=m_canvas2d->DisplayCanvas()->at(i);
 
-            m_image[4*50*i+4*j+3]=m_canvas2d->DisplayCanvas()->at(i);
+                m_image[4*50*i+4*j+2]=m_canvas2d->DisplayCanvas()->at(i);
 
+                m_image[4*50*i+4*j+3]=m_canvas2d->DisplayCanvas()->at(i);
+
+            }
         }
+    } else if (canvasType == "color") {
+
     }
+
 }
 
 SupportCanvas2D::~SupportCanvas2D() {

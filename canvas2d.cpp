@@ -13,9 +13,9 @@ Canvas2D::Canvas2D(std::string canvasType)
     }
     if (canvasType == "color"){//IF CLI input is colorful
         //task 7: enable a colorful canvas
-        //RGBA gray = RGBA(123,123,123,255)
-        //std::vector<RGBA> m_colorCanvasData.assign(100,gray)
-        //task 9: modify the pixel data to create a flower
+        RGBA gray = RGBA(123,123,123,255);
+        m_colorCanvasData.assign(500, gray);
+        //task 9: modify the pixel data to create a flowser
 
     }
 }
