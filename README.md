@@ -340,7 +340,7 @@ Hope you had a little fun drawing flowers! Now, instead of manually modifying th
 
 The key to interactivity in Qt is using events handlers.
 
-When events associated with particular _signals_ occur, Qt calls functions known as _slots_. You don’t need to know how to use these since we'll (do our best to) handle everything Qt-related. 
+When events associated with particular _signals_ occur, Qt calls functions that are known as _slots_. You don’t need to know how to use these since we'll (do our best to) handle everything Qt-related. 
 	
 Notice the `MouseDown()`, `MouseMove()`, and `MouseUp()` function stubs in the ______ class. These funtions get called when the user interats with the canvas (in other words, when an event occurs). In the next few sections, you'll need to fill in these function stubs in order to make your canvas interactive. 
 
@@ -353,20 +353,22 @@ Now, it's time to implement a pencil!
 Though we recommend using std::vector (and std::array) for all your canvas needs, Qt’s canvas is weird. Images displayed in Qt have to be of the type 'QImage'. QImages are defined by C arrays. Unfortunately, it's hard to circumvent the usage of QImages, so you'll have to work with C arrays when dealing with Qt. But, the good news is that C arrays are used in the same way!
 
 <details>
-  <summary>Want to know why Qt does this?</summary>
+  <summary>Why does Qt do this?</summary>
 
 We don’t know.
 
 </details>
-
-[By calling canvas->data], your program returns a pointer to the array of canvas pixels, which are RGBA structs. Your [] function returns a xy coordinate of your mouse in canvas space. Again, you need to work on solving the index for your pixel, and find a way to modify it.
+	
+When you call `canvas->data`, your program returns a pointer to the 1D array of canvas pixels (aka the array of RGBA structs). The [] function returns an (x, y) coordinate of your mouse in canvas space. Again, you will need to solve for the index of that particular pixel in order to change its color. 
 
 #### 4.2.2 Leaky Pencil
 
-Implement `pencilMove` such that it colors the pixel it’s currently on.
+**Task:**
+Implement `pencilMove` such that it colors the pixel it’s currently on. 
 
 #### 4.2.3 Good Pencil
 
+**Task:**
 Implement `pencilDown` and `pencilUp` such that the pencil only colors pixels when the mouse is held down.
 
 A Boolean variable in pencil class may be useful.
