@@ -20,8 +20,8 @@ Canvas2D::Canvas2D(std::string canvasType)
     }
     if (canvasType == "color"){//IF CLI input is colorful
         //task 7: enable a colorful canvas
-        RGBA gray = RGBA(123,123,123,255);
-        m_colorCanvasData.assign(500, gray);
+        RGBA magenta = RGBA(50, 0, 123,255);
+        m_colorCanvasData.assign(100, magenta);
         //task 9: modify the pixel data to create a flowser
 
     }
@@ -36,11 +36,11 @@ std::vector<uint8_t> *Canvas2D::DisplayCanvas(){
         return &m_canvasData;
 }
 
-//std::vector<RGBA> *Canvas2D::DisplayColor(){
-//    //Task 8:Return the pointer to the colorcanvasdata you just created
-//    //eg:
-//    return &m_colorCanvasData
-//}
+std::vector<RGBA> *Canvas2D::DisplayColor(){
+    //Task 8:Return the pointer to the colorcanvasdata you just created
+    //eg:
+    return &m_colorCanvasData;
+}
 
 
 void Canvas2D::mouseDown(int x, int y) {
