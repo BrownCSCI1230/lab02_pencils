@@ -14,11 +14,11 @@ void MainWindow::canvasSetup(std::string canvasType)
     m_supportcanvas = new SupportCanvas2D(canvasType);
 
     QImage myImage;
-    myImage.load("C:\\Users\\ThinkPad\\Desktop\\CSCI1230 TA\\lab02\\Pencil\\test.jpg");
+    myImage.load("/Users/angelax/angela/cs1230dev/lab02_pencils/test.jpg");
     myImage = myImage.convertToFormat(QImage::Format_RGBX8888);
 
     QImage other;
-    other.load("C:\\Users\\ThinkPad\\Desktop\\CSCI1230 TA\\lab02\\Pencil\\canvas.jpg");
+    other.load("/Users/angelax/angela/cs1230dev/lab02_pencils/canvas.jpg");
 
     std::cout<<myImage.width()<<myImage.height()<<std::endl;
     QByteArray arr = QByteArray::fromRawData((const char*)myImage.bits(), myImage.sizeInBytes());
@@ -26,18 +26,18 @@ void MainWindow::canvasSetup(std::string canvasType)
 
 
     std::cout<<arr.size()<<std::endl;
-    std::cout<<int(uint8_t (arr.data()[1673]))<<" "<<int(uint8_t (arr.data()[167]))<<std::endl;
+    std::cout<<int(uint8_t (arr.data()[1673]))<<" "<< int(uint8_t (arr.data()[167]))<<std::endl;
     ui->label->setPixmap(QPixmap::fromImage(other));
 
     //option 1:directly edit raw data, by passing a std::vector
     //exp:
     std::vector<uint8_t> buf;
-    for (int i = 0; i < arr.size()/4 ; i++ ){
+    for (int i = 0; i < arr.size()/4 ; i++ ) {
 //        std::cout<<int(uint8_t(arr.data()[3*i]))<<" "<<int(uint8_t(arr.data()[3*i+1]))<<" "<<int(uint8_t(arr.data()[3*i+2]))<<std::endl;
 
         buf.push_back(123);
         buf.push_back(0);
-        buf.push_back(0);
+        buf.push_back(123);
         buf.push_back(0);
     }
     m_canvas = &buf;

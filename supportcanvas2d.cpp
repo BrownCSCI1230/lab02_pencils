@@ -11,20 +11,25 @@ SupportCanvas2D::SupportCanvas2D(std::string canvasType)
         m_image.push_back(0);
         m_image.push_back(0);
         m_image.push_back(0);
-        m_image.push_back(0);
+        m_image.push_back(255);
     }
     m_canvas2d = new Canvas2D(canvasType);
 
     if (canvasType == "grayscale") {
-        for (int i=0 ; i < m_canvas2d->DisplayCanvas()->size(); i++) {
-            for (int j = 0; j<50; j++) {
-                m_image[4*50*i+4*j]=m_canvas2d->DisplayCanvas()->at(i);
-                m_image[4*50*i+4*j+1]=m_canvas2d->DisplayCanvas()->at(i);
+        for (int i = 0 ; i < m_canvas2d->DisplayCanvas()->size(); i++) {
+            int xStart = (i % 10) * 50;
+            int xEnd = xStart + 50;
+            int yStart = (i / 10) * 50;
+            int yEnd = yStart + 50;
 
-                m_image[4*50*i+4*j+2]=m_canvas2d->DisplayCanvas()->at(i);
-
-                m_image[4*50*i+4*j+3]=m_canvas2d->DisplayCanvas()->at(i);
-
+            for (int currY = yStart; currY < yEnd; currY++) {
+                for (int currX = xStart; currX < xEnd; currX++) {
+                    int index = currY * 2000 + currX * 4;
+                    m_image[index] = m_canvas2d->DisplayCanvas()->at(i);
+                    m_image[index+1] = m_canvas2d->DisplayCanvas()->at(i);
+                    m_image[index+2] = m_canvas2d->DisplayCanvas()->at(i);
+                    m_image[index+3] = m_canvas2d->DisplayCanvas()->at(i);
+                }
             }
         }
     } else if (canvasType == "color") {

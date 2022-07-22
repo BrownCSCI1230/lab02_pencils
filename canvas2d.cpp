@@ -6,10 +6,17 @@ Canvas2D::Canvas2D(std::string canvasType)
     if (canvasType == "grayscale"){//IF CLI input is grayscale
         //TASK 3:Initialize your canvas
         //eg:
-        m_canvasData.assign(100,123);
+        for (int i = 0; i < 100; i++) {
+            if (i % 2 == 0) {
+                m_canvasData.push_back(0);
+            } else {
+                m_canvasData.push_back(255);
+            }
+        }
+//        m_canvasData.assign(100,123);
         //Task 5: modify your pixel data to create a heart
         //eg:
-        m_canvasData.at(2)=255;
+//        m_canvasData.at(2)=255;
     }
     if (canvasType == "color"){//IF CLI input is colorful
         //task 7: enable a colorful canvas
