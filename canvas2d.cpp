@@ -6,23 +6,29 @@ Canvas2D::Canvas2D(std::string canvasType)
     if (canvasType == "grayscale"){//IF CLI input is grayscale
         //TASK 3:Initialize your canvas
         //eg:
-        for (int i = 0; i < 100; i++) {
-            if (i % 2 == 0) {
-                m_canvasData.push_back(0);
-            } else {
-                m_canvasData.push_back(255);
-            }
-        }
-//        m_canvasData.assign(100,123);
+        m_canvasData.assign(100,0);
         //Task 5: modify your pixel data to create a heart
         //eg:
-//        m_canvasData.at(2)=255;
+        m_canvasData.at(23)=255;
+        m_canvasData.at(24)=255;
+        m_canvasData.at(26)=255;
+        m_canvasData.at(27)=255;
+        m_canvasData.at(32)=255;
+        m_canvasData.at(35)=255;
+        m_canvasData.at(38)=255;
+        m_canvasData.at(42)=255;
+        m_canvasData.at(48)=255;
+        m_canvasData.at(53)=255;
+        m_canvasData.at(57)=255;
+        m_canvasData.at(64)=255;
+        m_canvasData.at(66)=255;
+        m_canvasData.at(75)=255;
     }
-    if (canvasType == "color"){//IF CLI input is colorful
+    if (canvasType == "color") { //IF CLI input is colorful
         //task 7: enable a colorful canvas
         RGBA magenta = RGBA(50, 0, 123,255);
         m_colorCanvasData.assign(100, magenta);
-        //task 9: modify the pixel data to create a flowser
+        //task 9: modify the pixel data to create a flower
 
     }
 }
