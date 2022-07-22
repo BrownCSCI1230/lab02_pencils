@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::canvasSetup(std::string canvasType)
 {
     m_supportcanvas = new SupportCanvas2D(canvasType);
+    m_supportcanvas->setEnabled(true);
 
     QImage myImage;
     myImage.load("/Users/angelax/angela/cs1230dev/lab02_pencils/test.jpg");
@@ -50,6 +51,7 @@ void MainWindow::canvasSetup(std::string canvasType)
     QImage now = QImage((const uchar*)img->data(), 500, 500, QImage::Format_RGBX8888);
     ui->label->setPixmap(QPixmap::fromImage(now));
     ui->label->show();
+    std::cout<<ui->label->x()<<std::endl;
     std::cout<<"got to Qimage show"<<std::endl;
 
 

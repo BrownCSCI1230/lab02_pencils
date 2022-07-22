@@ -9,6 +9,7 @@ class SupportCanvas2D : public QWidget{
     Q_OBJECT
 public:
     SupportCanvas2D(std::string canvasType);
+    SupportCanvas2D(QWidget* widget);
     ~SupportCanvas2D();
 
     // Resize the canvas (this will resize the window too and set the image to black)
@@ -30,9 +31,9 @@ public:
 
 protected:
     // Overridden from QWidget
-    virtual void mousePressEvent(QMouseEvent *event);
-    virtual void mouseMoveEvent(QMouseEvent *event);
-    virtual void mouseReleaseEvent(QMouseEvent *event);
+    virtual void mousePressEvent(QMouseEvent *event) override;
+    virtual void mouseMoveEvent(QMouseEvent *event) override;
+    virtual void mouseReleaseEvent(QMouseEvent *event) override;
 
     // This will be called when the size of the canvas has been changed
 

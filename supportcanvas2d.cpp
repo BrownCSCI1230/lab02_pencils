@@ -48,6 +48,11 @@ SupportCanvas2D::SupportCanvas2D(std::string canvasType)
 
 }
 
+SupportCanvas2D::SupportCanvas2D(QWidget* widget) {
+    this->setParent(widget);
+}
+
+
 SupportCanvas2D::~SupportCanvas2D() {
 }
 
@@ -61,6 +66,7 @@ void SupportCanvas2D::newImage() {
 
 void SupportCanvas2D::mousePressEvent(QMouseEvent *event) {
     //TODO:
+    std::cout << "press" << std::endl;
     int x = event->x(); // TODO: scale this to be 10x10
     int y = event->y(); // TODO: scale this to be 10x10
     m_canvas2d->mouseDown(x, y);
@@ -68,12 +74,13 @@ void SupportCanvas2D::mousePressEvent(QMouseEvent *event) {
 
 void SupportCanvas2D::mouseMoveEvent(QMouseEvent *event) {
     //TODO:
+    std::cout << "move" << std::endl;
 }
 
 void SupportCanvas2D::mouseReleaseEvent(QMouseEvent *event) {
     // Move the mouse again in case this event is at a different position then the last event.
     //TODO:
-
+    std::cout << "release" << std::endl;
 }
 
 void SupportCanvas2D::settingsChanged() {
