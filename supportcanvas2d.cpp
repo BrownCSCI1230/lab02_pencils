@@ -5,7 +5,7 @@
 #include <QMouseEvent>
 #include "iostream"
 
-SupportCanvas2D::SupportCanvas2D()
+SupportCanvas2D::SupportCanvas2D(std::string canvasType)
 {
     for(int i=0; i<250000; i++){
         m_image.push_back(0);
@@ -13,7 +13,7 @@ SupportCanvas2D::SupportCanvas2D()
         m_image.push_back(0);
         m_image.push_back(0);
     }
-    m_canvas2d = new Canvas2D();
+    m_canvas2d = new Canvas2D(canvasType);
     for(int i=0 ; i<m_canvas2d->DisplayCanvas()->size(); i++){
         for (int j = 0; j<50; j++){
             m_image[4*50*i+4*j]=m_canvas2d->DisplayCanvas()->at(i);

@@ -8,7 +8,7 @@
 class SupportCanvas2D : public QWidget{
     Q_OBJECT
 public:
-    SupportCanvas2D();
+    SupportCanvas2D(std::string canvasType);
     ~SupportCanvas2D();
 
     // Resize the canvas (this will resize the window too and set the image to black)

@@ -7,7 +7,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    m_supportcanvas = new SupportCanvas2D();
+}
+
+void MainWindow::canvasSetup(std::string canvasType)
+{
+    m_supportcanvas = new SupportCanvas2D(canvasType);
 
     QImage myImage;
     myImage.load("C:\\Users\\ThinkPad\\Desktop\\CSCI1230 TA\\lab02\\Pencil\\test.jpg");

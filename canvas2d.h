@@ -5,7 +5,7 @@
 
 class Canvas2D {
 public:
-    Canvas2D();
+    Canvas2D(std::string canvasType);
 
     void settingsChanged();
 

@@ -1,9 +1,9 @@
 #include "canvas2d.h"
 #include <vector>
 
-Canvas2D::Canvas2D()
+Canvas2D::Canvas2D(std::string canvasType)
 {
-    if(true){//IF CLI input is grayscale
+    if (canvasType == "grayscale"){//IF CLI input is grayscale
         //TASK 3:Initialize your canvas
         //eg:
         m_canvasData.assign(100,123);
@@ -11,7 +11,7 @@ Canvas2D::Canvas2D()
         //eg:
         m_canvasData.at(2)=255;
     }
-    if(false){//IF CLI input is colorful
+    if (canvasType == "color"){//IF CLI input is colorful
         //task 7: enable a colorful canvas
         //RGBA gray = RGBA(123,123,123,255)
         //std::vector<RGBA> m_colorCanvasData.assign(100,gray)
