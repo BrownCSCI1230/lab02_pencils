@@ -31,6 +31,8 @@ public:
     //Task 6:create your colorful canvas
     //eg:
     std::vector<RGBA> m_colorCanvasData;
+private:
+    void drawFlower(int x, int y);
 };
 
 #endif // CANVAS2D_H

@@ -61,6 +61,9 @@ void SupportCanvas2D::newImage() {
 
 void SupportCanvas2D::mousePressEvent(QMouseEvent *event) {
     //TODO:
+    int x = event->x(); // TODO: scale this to be 10x10
+    int y = event->y(); // TODO: scale this to be 10x10
+    m_canvas2d->mouseDown(x, y);
 }
 
 void SupportCanvas2D::mouseMoveEvent(QMouseEvent *event) {

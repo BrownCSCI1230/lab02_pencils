@@ -26,15 +26,30 @@ Canvas2D::Canvas2D(std::string canvasType)
     }
     if (canvasType == "color") { //IF CLI input is colorful
         //task 7: enable a colorful canvas
-        RGBA magenta = RGBA(50, 0, 123,255);
-        m_colorCanvasData.assign(100, magenta);
+        RGBA black = RGBA(0, 0, 0,255);
+        m_colorCanvasData.assign(100, black);
         //task 9: modify the pixel data to create a flower
-
+        drawFlower(5, 5);
+        drawFlower(2, 3);
     }
 }
 
 void Canvas2D::settingsChanged() {
 
+}
+
+void Canvas2D::drawFlower(int x, int y) {
+    // task 9: modify the pixel data to create a flower
+    int centerIndex = y * 10 + x;
+    int top = centerIndex - 10;
+    int bottom = centerIndex + 10;
+    int left = centerIndex - 1;
+    int right = centerIndex + 1;
+    m_colorCanvasData.at(centerIndex) = RGBA(255, 255, 255, 255);
+    m_colorCanvasData.at(top) = RGBA(100, 0, 50, 255);
+    m_colorCanvasData.at(bottom) = RGBA(100, 0, 50, 255);
+    m_colorCanvasData.at(left) = RGBA(100, 0, 50, 255);
+    m_colorCanvasData.at(right) = RGBA(100, 0, 50, 255);
 }
 
 std::vector<uint8_t> *Canvas2D::DisplayCanvas(){
