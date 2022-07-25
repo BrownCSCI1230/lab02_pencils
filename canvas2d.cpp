@@ -1,7 +1,10 @@
 #include "canvas2d.h"
+#include "pencil.h"
 #include <vector>
+#include <iostream>
 
-Canvas2D::Canvas2D(std::string canvasType)
+Canvas2D::Canvas2D(std::string canvasType) :
+    m_pencil(new pencil())
 {
     if (canvasType == "grayscale"){//IF CLI input is grayscale
         //TASK 3:Initialize your canvas
@@ -29,9 +32,14 @@ Canvas2D::Canvas2D(std::string canvasType)
         RGBA black = RGBA(0, 0, 0,255);
         m_colorCanvasData.assign(100, black);
         //task 9: modify the pixel data to create a flower
-        drawFlower(5, 5);
-        drawFlower(2, 3);
+//        drawFlower(5, 5);
+//        drawFlower(2, 3);
     }
+}
+
+Canvas2D::~Canvas2D()
+{
+    delete m_pencil;
 }
 
 void Canvas2D::settingsChanged() {
@@ -66,10 +74,16 @@ std::vector<RGBA> *Canvas2D::DisplayColor(){
 
 void Canvas2D::mouseDown(int x, int y) {
     // Brush TODO: handle mouse events
+    m_pencil->brushDown(x, y, this);
+//    int index = y * 10 + x;
+//    canvas2d->m_colorCanvasData.at(index) = RGBA(100, 0, 50, 255);
 }
 
 void Canvas2D::mouseDragged(int x, int y) {
     // Brush TODO: handle mouse events
+//    int index = y * 10 + x;
+//    m_colorCanvasData.at(index) = RGBA(100, 0, 50, 255);
+    m_pencil->brushDown(x, y, this);
 }
 
 void Canvas2D::mouseUp(int x, int y) {
@@ -85,4 +99,9 @@ void Canvas2D::filterImage() {
 }
 
 void Canvas2D::setImage() {
+}
+
+void Canvas2D::updateColorData(int index, RGBA color)
+{
+    m_colorCanvasData.at(index) = color;
 }

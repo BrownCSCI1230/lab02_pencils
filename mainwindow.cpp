@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "QtGui/qevent.h"
 #include "ui_mainwindow.h"
 #include "iostream"
 
@@ -12,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::canvasSetup(std::string canvasType)
 {
     m_supportcanvas = new SupportCanvas2D(canvasType);
-    m_supportcanvas->setEnabled(true);
+    this->setMouseTracking(true);
 
     QImage myImage;
     myImage.load("/Users/angelax/angela/cs1230dev/lab02_pencils/test.jpg");
@@ -34,27 +35,72 @@ void MainWindow::canvasSetup(std::string canvasType)
     //exp:
     std::vector<uint8_t> buf;
     for (int i = 0; i < arr.size()/4 ; i++ ) {
-//        std::cout<<int(uint8_t(arr.data()[3*i]))<<" "<<int(uint8_t(arr.data()[3*i+1]))<<" "<<int(uint8_t(arr.data()[3*i+2]))<<std::endl;
-
         buf.push_back(123);
         buf.push_back(0);
         buf.push_back(123);
         buf.push_back(0);
     }
     m_canvas = &buf;
-    m_canvas= m_supportcanvas->getImage();
+    drawImage();
+}
 
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    int x = event->x();
+    int y = event->y();
+
+    if (x >= 250 && x <= 750 && y >= 50 && y <= 550)
+    {
+        x -= 250;
+        y -= 50;
+
+        m_supportcanvas->mouseDown(x, y);
+        drawImage();
+    }
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    int x = event->x();
+    int y = event->y();
+
+    if (x >= 250 && x <= 750 && y >= 50 && y <= 550)
+    {
+        x -= 250;
+        y -= 50;
+
+        m_supportcanvas->mouseDrag(x, y);
+        drawImage();
+
+    }
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    int x = event->x();
+    int y = event->y();
+    if (x >= 250 && x <= 750 && y >= 50 && y <= 550)
+    {
+        x -= 250;
+        y -= 50;
+
+        m_supportcanvas->mouseUp(x, y);
+        drawImage();
+    }
+}
+
+void MainWindow::drawImage()
+{
+    m_canvas= m_supportcanvas->getImage();
 
     QByteArray* img = new QByteArray(reinterpret_cast<const char*>(m_canvas->data()), m_canvas->size());
 
-
     QImage now = QImage((const uchar*)img->data(), 500, 500, QImage::Format_RGBX8888);
     ui->label->setPixmap(QPixmap::fromImage(now));
+    ui->label->setMouseTracking(true);
     ui->label->show();
-    std::cout<<ui->label->x()<<std::endl;
-    std::cout<<"got to Qimage show"<<std::endl;
 
-
+    delete img;
 }
 
 MainWindow::~MainWindow()

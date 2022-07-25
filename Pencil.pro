@@ -12,11 +12,13 @@ SOURCES += \
     canvas2d.cpp \
     main.cpp \
     mainwindow.cpp \
+    pencil.cpp \
     supportcanvas2d.cpp
 
 HEADERS += \
     canvas2d.h \
     mainwindow.h \
+    pencil.h \
     supportcanvas2d.h
 
 FORMS += \

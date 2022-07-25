@@ -28,12 +28,16 @@ public:
 
     std::vector<uint8_t> *getImage(){return &m_image;}
 
+    void mouseDown(int x, int y);
+    void mouseDrag(int x, int y);
+    void mouseUp(int x, int y);
+
 
 protected:
     // Overridden from QWidget
-    virtual void mousePressEvent(QMouseEvent *event) override;
-    virtual void mouseMoveEvent(QMouseEvent *event) override;
-    virtual void mouseReleaseEvent(QMouseEvent *event) override;
+//    virtual void mousePressEvent(QMouseEvent *event) override;
+//    virtual void mouseMoveEvent(QMouseEvent *event) override;
+//    virtual void mouseReleaseEvent(QMouseEvent *event) override;
 
     // This will be called when the size of the canvas has been changed
 
@@ -42,6 +46,9 @@ protected:
 
     std::vector<uint8_t> m_image;
     Canvas2D *m_canvas2d;
+    std::string m_canvasType;
+
+    void colorCanvas();
 };
 
 #endif // SUPPORTCANVAS2D_H

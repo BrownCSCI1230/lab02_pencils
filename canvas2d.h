@@ -3,10 +3,12 @@
 
 #include <QWidget>
 #include "RGBA.h"
+#include "pencil.h"
 
 class Canvas2D {
 public:
     Canvas2D(std::string canvasType);
+    ~Canvas2D();
 
     void settingsChanged();
 
@@ -18,6 +20,8 @@ public:
 
     void filterImage();
 
+    void updateColorData(int index, RGBA color);
+
     // Return an array containing the rows of the image one after another, starting from the top.
     // Each row is width() wide and there are height() rows, so this array will have
     // width() * height() elements.
@@ -28,6 +32,7 @@ public:
     // used by support code to provide access to canvas data
     void setImage();
     std::vector<uint8_t> m_canvasData;
+    pencil *m_pencil;
     //Task 6:create your colorful canvas
     //eg:
     std::vector<RGBA> m_colorCanvasData;
